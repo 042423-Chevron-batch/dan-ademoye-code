@@ -42,3 +42,15 @@ while true; do
         echo "You chose $user_choice"
         echo "Computer chose $computer_choice"
         get_winner $user_choice $computer_choice
+        
+        # ask the user if they want to play again
+        ask_play_again
+        if [[ $? -eq 1 ]]; then
+            break
+        fi
+    else
+        echo "Invalid choice. Please enter rock, paper, or scissors."
+    fi
+done
+
+echo "Thanks for playing Rock Paper Scissors!" 
