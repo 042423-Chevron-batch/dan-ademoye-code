@@ -30,3 +30,10 @@ function ask_play_again {
     fi
 }
 
+# main game loop
+while true; do
+    echo "Let's play Rock Paper Scissors!"
+    read -p "Enter your choice (rock/paper/scissors): " user_choice
+    user_choice=$(echo $user_choice | tr '[:upper:]' '[:lower:]')
+    
+    
