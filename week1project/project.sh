@@ -36,4 +36,9 @@ while true; do
     read -p "Enter your choice (rock/paper/scissors): " user_choice
     user_choice=$(echo $user_choice | tr '[:upper:]' '[:lower:]')
     
-    
+    # check if the user entered a valid choice
+    if [[ " ${options[@]} " =~ " ${user_choice} " ]]; then
+        computer_choice=$(get_computer_choice)
+        echo "You chose $user_choice"
+        echo "Computer chose $computer_choice"
+        get_winner $user_choice $computer_choice
