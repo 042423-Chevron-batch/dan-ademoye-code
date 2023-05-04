@@ -1,0 +1,16 @@
+FROM mcr.microsoft.com/dotnet/sdk:7.0
+# Dockerfile is an instruction sheet to create docker image
+
+# Update the apt-get and install dotnet sdk
+
+# Copy over the source code
+WORKDIR /app
+COPY HangMan.csproj HangMan.csproj
+COPY Program.cs Program.cs
+
+# Build the application
+RUN dotnet publish -o dist
+
+# When you do docker run, run this executable
+# Equivalent to going "dotnet dist/HelloWorld.dll" on terminal
+CMD [ "dotnet", "dist/HangMan.dll" ]
