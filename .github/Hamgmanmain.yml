@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: starter Hangman
 # The main point of Continuous Integration is to ensure that the new code that is about to be merged
 # or the new code that has been pushed Won't Break Your Application
 
