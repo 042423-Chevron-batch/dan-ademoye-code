@@ -57,7 +57,7 @@ jobs:
         with:
           app-name: 'adehangmanapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.DAN_ADEMOYE_AZURE_PUBLISH }}
+          publish-profile: ${{ secrets.ADE_HANGMAN_PUBLISH }}
           package: .
 
 
