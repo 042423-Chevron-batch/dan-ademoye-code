@@ -1,38 +1,42 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy ASP.Net Core app to Azure Web App - adehangmanapi
+name: Continue integration Hangman
+# The main point of Continuous Integration is to ensure that the new code that is about to be merged
+# or the new code that has been pushed Won't Break Your Application
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
+# This on clause specifies which event this pipeline/workflow will run
+on: 
+  push: 
+    branches: ["main"] #run whenever there is a push event to main branch
+  pull_request:
+    branches: ["main"] # run whenever there is a pull request to main branch
+  workflow_dispatch: # you can manually trigger this workflow
+  
 jobs:
+# This is a job that grabs ubuntu VM and runs "echo 'Hello, World!'"
   build:
     runs-on: ubuntu-latest
-
+    env:
+      WORKING_DIR: week1project
     steps:
-      - uses: actions/checkout@v2
+    - name: say hello
+      run: echo "Hello, World!"
 
-      - name: Set up .NET Core
-        uses: actions/setup-dotnet@v1
-        with:
-          dotnet-version: '7.x'
-          include-prerelease: true
+    - name: checkout git repo
+      uses: actions/checkout@v3
 
-      - name: Build with dotnet
-        run: dotnet build --configuration Release
+    - name: Make sure it builds
+      run: dotnet build ${{ env.WORKING_DIR }}
 
-      - name: dotnet publish
-        run: dotnet publish -c Release -o ${{env.DOTNET_ROOT}}/myapp
+    - name: dotnet publish
+      run: dotnet publish ${{ env.WORKING_DIR }} -c Release -o myapp
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: .net-app
-          path: ${{env.DOTNET_ROOT}}/myapp
+    - name: Upload artifact for deployment job
+      uses: actions/upload-artifact@v2
+      with:
+        name: .net-app
+        path: myapp
 
   deploy:
     runs-on: ubuntu-latest
@@ -53,5 +57,7 @@ jobs:
         with:
           app-name: 'adehangmanapi'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_02C34958CA264AFE95307D86323ABDFB }}
+          publish-profile: ${{ secrets.DAN_ADEMOYE_AZURE_PUBLISH }}
           package: .
+
+
