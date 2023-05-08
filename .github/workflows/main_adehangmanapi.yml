@@ -18,7 +18,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      WORKING_DIR: week1project
+      WORKING_DIR: HangMan
     steps:
     - name: say hello
       run: echo "Hello, World!"
