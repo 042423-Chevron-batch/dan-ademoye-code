@@ -1,4 +1,4 @@
-name: Continuous Integration
+name: starter Hangman
 # The main point of Continuous Integration is to ensure that the new code that is about to be merged
 # or the new code that has been pushed Won't Break Your Application
 
@@ -15,7 +15,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      WORKING_DIR: TemplateApi
+      WORKING_DIR: week1project
     steps:
     - name: say hello
       run: echo "Hello, World!"
@@ -56,3 +56,4 @@ jobs:
           slot-name: 'Production'
           publish-profile: ${{ secrets.DAN_ADEMOYE_AZURE_PUBLISH }}
           package: .
+
