@@ -1,0 +1,15 @@
+ FROM mcr.microsoft.com/dotnet/sdk:7.0 AS Build
+# FROM ubuntu
+WORKDIR /app
+
+COPY . /app/
+
+RUN dotnet publish -c Release -o dist
+
+# Multistage build
+FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS Run
+
+WORKDIR /app
+COPY --from=Build /app/dist/ .
+
+CMD ["dotnet", "HangMan.dll"]
