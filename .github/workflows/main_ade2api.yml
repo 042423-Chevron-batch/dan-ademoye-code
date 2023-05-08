@@ -54,5 +54,5 @@ jobs:
         with:
           app-name: 'ade2api'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D1036E737B70482692D72BE58BF71711 }}
+          publish-profile: ${{ secrets.ADE_TEMPLATEAPI_AZURE }}
           package: .
