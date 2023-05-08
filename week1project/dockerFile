@@ -6,7 +6,7 @@ FROM mcr.microsoft.com/dotnet/sdk:7.0
 # Copy over the source code
 WORKDIR /app
 COPY HangMan.csproj HangMan.csproj
-COPY Program.cs Program.cs
+COPY project.sh Project.sh
 
 # Build the application
 RUN dotnet publish -o dist
