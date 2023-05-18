@@ -9,7 +9,7 @@ internal class Program
         // add some nodes
         SingleyLinkedList sll = new SingleyLinkedList();
 
-        sll.AddToFront("Jane", "Eare");
+        sll.AddToFront("Daniel", "Ademoye");
         sll.AddToFront("1Mark", "1Moore");
         sll.AddToFront("2Mark", "2Moore");
         sll.AddToFront("3Mark", "3Moore");
@@ -19,7 +19,7 @@ internal class Program
 
         foreach (Person p in lp)
         {
-            Console.WriteLine($"The name of the dude is => {p.Fname} {p.Lname}");
+            Console.WriteLine($"The name of the person is => {p.Fname} {p.Lname}");
         }
 
 
