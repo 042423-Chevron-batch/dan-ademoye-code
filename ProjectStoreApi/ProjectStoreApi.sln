@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectApiStoreApi", "Proje
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.ProjectStoreApi", "Tests.ProjectStoreApi\Tests.ProjectStoreApi.csproj", "{2E2A50A3-BBF3-4217-9313-EFC63670AA94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStoreApiBusiness", "ProjectStoreApiBusiness\ProjectStoreApiBusiness.csproj", "{E0378AFF-EFEB-4FD0-BD93-56F6F830A184}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStoreApiRepository", "ProjectStoreApiRepository\ProjectStoreApiRepository.csproj", "{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +28,13 @@ Global
 		{2E2A50A3-BBF3-4217-9313-EFC63670AA94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E2A50A3-BBF3-4217-9313-EFC63670AA94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E2A50A3-BBF3-4217-9313-EFC63670AA94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E0378AFF-EFEB-4FD0-BD93-56F6F830A184}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E0378AFF-EFEB-4FD0-BD93-56F6F830A184}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E0378AFF-EFEB-4FD0-BD93-56F6F830A184}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E0378AFF-EFEB-4FD0-BD93-56F6F830A184}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
