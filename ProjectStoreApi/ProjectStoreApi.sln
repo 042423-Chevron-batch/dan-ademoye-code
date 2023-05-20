@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStoreApiBusiness", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStoreApiRepository", "ProjectStoreApiRepository\ProjectStoreApiRepository.csproj", "{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProjectStoreApiModels", "ProjectStoreApiModels\ProjectStoreApiModels.csproj", "{403F02E8-C331-4C74-9003-4AF3EAC28A2B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDEDC30B-8E66-49CB-AA10-F779D59C1BF4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{403F02E8-C331-4C74-9003-4AF3EAC28A2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{403F02E8-C331-4C74-9003-4AF3EAC28A2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{403F02E8-C331-4C74-9003-4AF3EAC28A2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{403F02E8-C331-4C74-9003-4AF3EAC28A2B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
