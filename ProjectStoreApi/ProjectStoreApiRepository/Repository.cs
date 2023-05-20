@@ -12,7 +12,7 @@ namespace ProjectStoreApiRepository
     {
         //here we will write the ADO.NET code to access the Database.
         // 
-        private static SqlConnection con { get; set; } = new SqlConnection("Server=tcp:ademoye123.database.windows.net,1433;Initial Catalog=ademoye123;Persist Security Info=False;User ID=ademoye123;Password={Daniel123!};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        private static SqlConnection con { get; set; } = new SqlConnection("Server=tcp:ademoye-server.database.windows.net,1433;Initial Catalog=ademoye-db;Persist Security Info=False;User ID=ademoye123;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
 
 
         public static int Test(string fname, string lname, string email)
