@@ -22,4 +22,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\ProjectStoreApiModels\ProjectStoreApiModels.csproj" />
+    <ProjectReference Include="..\ProjectApiStoreAPi\ProjectApiStoreAPi.csproj" />
+    <ProjectReference Include="..\ProjectStoreApiBusiness\ProjectStoreApiBusiness.csproj" />
+    <ProjectReference Include="..\ProjectStoreApiRepository\ProjectStoreApiRepository.csproj" />
+  </ItemGroup>
+
 </Project>
