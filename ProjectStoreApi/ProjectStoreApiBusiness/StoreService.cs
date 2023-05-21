@@ -2,41 +2,55 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ProjectStoreApiModels;
+using ProjectStoreApiRepository;
 
 namespace ProjectStoreApiBusiness
 {
     public class StoreService
-{
-    private readonly IRepository<Store> _storeRepository;
-
-    public StoreService(IRepository<Store> storeRepository)
     {
-        _storeRepository = storeRepository;
+        private IStoreRepository _storeRepository;
+
+        public StoreService(IStoreRepository storeRepository)
+        {
+            _storeRepository = storeRepository;
+        }
+
+        public List<Store> GetAllStores()
+        {
+            return _storeRepository.GetAllStores();
+        }
+
+        public List<Product> GetProductsByStore(int storeId)
+        {
+            return _storeRepository.GetProductsByStore(storeId);
+        }
+
+        public void PlaceOrder(Order order)
+        {
+
+        // Perform any necessary business logic validations or calculations
+            _storeRepository.PlaceOrder(order);
+        }
+
+        public List<Order> GetOrderHistoryByStore(int storeId)
+        {
+            return _storeRepository.GetOrderHistoryByStore(storeId);
+        }
+
+        public List<Order> GetOrderHistoryByCustomer(int customerId)
+        {
+            return _storeRepository.GetOrderHistoryByCustomer(customerId);
+        }
+
+        public List<Order> GetAllOrderHistory()
+        {
+            return _storeRepository.GetAllOrderHistory();
+        }
+        public List<Order> GetOrderHistorySorted(string sortBy)
+        {
+            return _storeRepository.GetOrderHistorySorted(sortBy);
+        }
+    
     }
-
-    public void AddStore(Store store)
-    {
-        // Input validation
-
-        // Add the store to the repository
-        _storeRepository.Add(store);
-    }
-
-    public List<Store> GetAllStores()
-    {
-        // Retrieve all stores from the repository
-        return _storeRepository.GetAll();
-    }
-
-    public Store GetStoreById(int storeId)
-    {
-        // Input validation
-
-        // Retrieve the store from the repository by its ID
-        return _storeRepository.GetById(storeId);
-    }
-
-    // Additional methods for store-related operations as needed
-}
-
 }

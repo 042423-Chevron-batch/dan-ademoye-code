@@ -9,9 +9,9 @@ namespace ProjectStoreApiModels
     {
     public int Id { get; set; }
     public DateTime OrderTime { get; set; }
-    public Customer Customer { get; set; }
-    public Location StoreLocation { get; set; }
-    public List<Product> Products { get; set; }
+    public Customer? Customer { get; set; }
+    public Location? StoreLocation { get; set; }
+    public List<Product>? Products { get; set; }
     // Additional properties and relationships as needed
     }
 }
