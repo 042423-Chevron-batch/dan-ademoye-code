@@ -8,7 +8,7 @@ namespace ProjectStoreApiModels
     public class Store
     {
     public int Id { get; set; }
-    public string Name { get; set; }
+    public string? Name { get; set; }
     // Additional properties and relationships as needed
     }
 }

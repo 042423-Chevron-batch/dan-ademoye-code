@@ -7,9 +7,11 @@ namespace ProjectStoreApiModels
 {
     public class Customer
     {
-    public int Id { get; set; }
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
-    // Additional properties and relationships as needed
+        public int Id { get; set; }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        // TODO Add other properties as needed
     }
+    // TODO Additional properties and relationships as needed
+    
 }
