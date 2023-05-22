@@ -41,45 +41,145 @@ namespace ProjectStoreApiRepository
             return res;
         }
 
-        // SELECT CustomerId, FirstName, LastName, Email FROM [dbo].[Customer] WHERE FirstName = 'James Alan' AND LastName = 'Moore'; 
-        public static Person Login(string fname, string lname)
-        {
-            SqlCommand comm = new SqlCommand("SELECT CustomerId, FirstName, LastName, Email FROM [dbo].[Customer] WHERE FirstName = @fname AND LastName = @lname;", con);
-            comm.Parameters.AddWithValue("@fname", fname);
-            comm.Parameters.AddWithValue("@lname", lname);
-            con.Open();
-            SqlDataReader ret = comm.ExecuteReader();
+    
+        private readonly string _connectionString;
 
-            Person p = new Person();
-            //List<Person> myList = new List<Person>();
-            // this while loop will iterate over all the rows in the return. You will need to store all the rows in a List<Person>
-            while (ret.Read())
-            {
-                p = new Person(ret.GetInt32(0), ret.GetString(1), ret.GetString(2), ret.GetString(3));
-                //myList.Add(new Person(ret.GetInt32(0), ret.GetString(1), ret.GetString(2), ret.GetString(3)));
-            }
-            return p;
+        public StoreRepository(string connectionString)
+        {
+            _connectionString = connectionString;
         }
 
-
-        //get all the customers (example)
-        public static List<Person> GetCustomers(string fname, string lname)
+        public List<Store> GetAllStores()
         {
-            SqlCommand comm = new SqlCommand("SELECT CustomerId, FirstName, LastName, Email FROM [dbo].[Customer];", con);
-            con.Open();
-            SqlDataReader ret = comm.ExecuteReader();
+            List<Store> stores = new List<Store>();
 
-            List<Person> myList = new List<Person>();
-            // this while loop will iterate over all the rows in the return. You will need to store all the rows in a List<Person>
-            while (ret.Read())
+            using (SqlConnection connection = new SqlConnection(_connectionString))
             {
-                myList.Add(new Person(ret.GetInt32(0), ret.GetString(1), ret.GetString(2), ret.GetString(3)));
+                connection.Open();
+
+                string query = "SELECT Id, Name, Location FROM Stores";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Store store = new Store
+                            {
+                                Id = (int)reader["Id"],
+                                Name = (string)reader["Name"],
+                                Location = (string)reader["Location"]
+                            };
+
+                            stores.Add(store);
+                        }
+                    }
+                }
             }
-            return myList;
+
+            return stores;
         }
 
+        public List<Product> GetProductsByStoreId(int storeId)
+        {
+            List<Product> products = new List<Product>();
 
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                connection.Open();
+
+                string query = "SELECT Id, Name, Price, Description FROM Products WHERE StoreId = @StoreId";
+
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@StoreId", storeId);
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            Product product = new Product
+                            {
+                                Id = (int)reader["Id"],
+                                Name = (string)reader["Name"],
+                                Price = (decimal)reader["Price"],
+                                Description = (string)reader["Description"]
+                            };
+
+                            products.Add(product);
+                        }
+                    }
+                }
+            }
+
+            return products;
+        }
 
     }
+    
+    // method retrieves the order history for a specific store
+
+    public void InsertOrder(Order order)
+    {
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            string query = "INSERT INTO Orders (CustomerId, StoreId, OrderTime) VALUES (@CustomerId, @StoreId, @OrderTime)";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@CustomerId", order.CustomerId);
+                command.Parameters.AddWithValue("@StoreId", order.StoreId);
+                command.Parameters.AddWithValue("@OrderTime", order.OrderTime);
+
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+
+    public List<Order> GetOrderHistoryByStoreId(int storeId)
+    {
+        List<Order> orders = new List<Order>();
+
+        using (SqlConnection connection = new SqlConnection(_connectionString))
+        {
+            connection.Open();
+
+            string query = "SELECT Id, CustomerId, StoreId, OrderTime FROM Orders WHERE StoreId = @StoreId";
+
+            using (SqlCommand command = new SqlCommand(query, connection))
+            {
+                command.Parameters.AddWithValue("@StoreId", storeId);
+
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Order order = new Order
+                        {
+                            Id = (int)reader["Id"],
+                            CustomerId = (int)reader["CustomerId"],
+                            StoreId = (int)reader["StoreId"],
+                            OrderTime = (DateTime)reader["OrderTime"]
+                        };
+
+                        orders.Add(order);
+                    }
+                }
+            }
+        }
+
+        return orders;
+    }
+
 }
+
+
+
+
+
+
+
     

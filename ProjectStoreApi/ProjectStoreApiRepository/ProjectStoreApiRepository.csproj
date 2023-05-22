@@ -3,7 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ProjectStoreApiModels\ProjectStoreApiModels.csproj" />
   </ItemGroup>
-
+  
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

@@ -9,48 +9,120 @@ namespace ProjectStoreApiBusiness
 {
     public class StoreService
     {
-        private IStoreRepository _storeRepository;
-
-        public StoreService(IStoreRepository storeRepository)
-        {
-            _storeRepository = storeRepository;
-        }
-
-        public List<Store> GetAllStores()
-        {
-            return _storeRepository.GetAllStores();
-        }
-
-        public List<Product> GetProductsByStore(int storeId)
-        {
-            return _storeRepository.GetProductsByStore(storeId);
-        }
-
-        public void PlaceOrder(Order order)
-        {
-
-        // Perform any necessary business logic validations or calculations
-            _storeRepository.PlaceOrder(order);
-        }
-
-        public List<Order> GetOrderHistoryByStore(int storeId)
-        {
-            return _storeRepository.GetOrderHistoryByStore(storeId);
-        }
-
-        public List<Order> GetOrderHistoryByCustomer(int customerId)
-        {
-            return _storeRepository.GetOrderHistoryByCustomer(customerId);
-        }
-
-        public List<Order> GetAllOrderHistory()
-        {
-            return _storeRepository.GetAllOrderHistory();
-        }
-        public List<Order> GetOrderHistorySorted(string sortBy)
-        {
-            return _storeRepository.GetOrderHistorySorted(sortBy);
-        }
+       public void AddCustomer(Customer customer)
+       {
+    // Validate input
+       if (customer == null)
+    {
+        throw new ArgumentException("Invalid customer.");
+    }
     
+    // Save the customer to the database
+    CustomerRepository.Add(customer);
+    }
+    public List<Customer> SearchCustomersByName(string name)
+    {
+    // Validate input
+    if (string.IsNullOrEmpty(name))
+    {
+        throw new ArgumentException("Invalid name.");
+    }
+
+    // Search for customers in the database
+    return CustomerRepository.GetByName(name);
+    }
+    public void DisplayOrderDetails(Order order)
+    {
+    // Validate input
+    if (order == null)
+    {
+        throw new ArgumentException("Invalid order.");
+    }
+
+    // Display order details
+    Console.WriteLine($"Order ID: {order.ID}");
+    Console.WriteLine($"Order Time: {order.OrderTime}");
+    Console.WriteLine($"Customer: {order.Customer.FirstName} {order.Customer.LastName}");
+    Console.WriteLine($"Store Location: {order.StoreLocation.Name}");
+
+    Console.WriteLine("Products:");
+    foreach (Product product in order.Products)
+    {
+        Console.WriteLine($"- {product.Name} (${product.Price})");
     }
 }
+
+    public void DisplayStoreOrderHistory(Location storeLocation)
+{
+    // Input validation
+    if (storeLocation == null)
+    {
+        throw new ArgumentException("Invalid store location.");
+    }
+
+    // Get the order history from the database
+    List<Order> orders = OrderRepository.GetOrdersByLocation(storeLocation);
+
+    // Display order history
+    Console.WriteLine($"Order History of {storeLocation.Name}:");
+    foreach (Order order in orders)
+    {
+        Console.WriteLine($"Order ID: {order.ID}");
+        Console.WriteLine($"Order Time: {order.OrderTime}");
+        Console.WriteLine($"Customer: {order.Customer.FirstName} {order.Customer.LastName}");
+        Console.WriteLine("Products:");
+        foreach (Product product in order.Products)
+        {
+            Console.WriteLine($"- {product.Name} (${product.Price})");
+        }
+        Console.WriteLine();
+    }
+    
+}
+        public void DisplayCustomerOrderHistory(Customer customer)
+{
+    // Input validation
+    if (customer == null)
+    {
+        throw new ArgumentException("Invalid customer.");
+    }
+
+    // Get the order history from the database
+    List<Order> orders = OrderRepository.GetOrdersBy;
+
+    }
+
+    private void AddToCart(Product product, StoreLocation store)
+    {
+        Console.WriteLine($"------ Add to Cart ------");
+        Console.WriteLine($"Product: {product.Name} - ${product.Price}");
+        Console.WriteLine($"Store: {store.Name}");
+        Console.WriteLine("-------------------------");
+
+        Console.Write("Enter the quantity: ");
+        string userInput = GetUserInput();
+        if (int.TryParse(userInput, out int quantity) && quantity > 0)
+        {
+            bool success = storeApp.AddToCart(product, store, quantity);
+            if (success)
+            {
+                Console.WriteLine("Product added to cart successfully!");
+            }
+            else
+            {
+                Console.WriteLine("Failed to add product to cart.");
+            }
+        }          
+        else
+        {
+            Console.WriteLine("Invalid quantity. Please try again.");
+        }
+
+        Console.WriteLine("-------------------------");
+        ChooseStore();
+    }  
+    
+ }
+
+}
+
