@@ -18,19 +18,19 @@ namespace ProjectStoreApiBusiness
     }
     
     // Save the customer to the database
-    CustomerRepository.Add(customer);
+    //CustomerRepository.Add(customer);
     }
-    public List<Customer> SearchCustomersByName(string name)
-    {
-    // Validate input
-    if (string.IsNullOrEmpty(name))
-    {
-        throw new ArgumentException("Invalid name.");
-    }
+    // public List<Customer> SearchCustomersByName(string name)
+    // {
+    // // Validate input
+    // if (string.IsNullOrEmpty(name))
+    // {
+    //     throw new ArgumentException("Invalid name.");
+    // }
 
-    // Search for customers in the database
-    return CustomerRepository.GetByName(name);
-    }
+    // // Search for customers in the database
+    // //return CustomerRepository.GetByName(name);
+    // }
     public void DisplayOrderDetails(Order order)
     {
     // Validate input
@@ -40,7 +40,7 @@ namespace ProjectStoreApiBusiness
     }
 
     // Display order details
-    Console.WriteLine($"Order ID: {order.ID}");
+   // Console.WriteLine($"Order ID: {order.ID}");
     Console.WriteLine($"Order Time: {order.OrderTime}");
     Console.WriteLine($"Customer: {order.Customer.FirstName} {order.Customer.LastName}");
     Console.WriteLine($"Store Location: {order.StoreLocation.Name}");
@@ -61,13 +61,13 @@ namespace ProjectStoreApiBusiness
     }
 
     // Get the order history from the database
-    List<Order> orders = OrderRepository.GetOrdersByLocation(storeLocation);
+    List<Order> orders = GetOrdersByLocation(storeLocation);
 
     // Display order history
     Console.WriteLine($"Order History of {storeLocation.Name}:");
     foreach (Order order in orders)
     {
-        Console.WriteLine($"Order ID: {order.ID}");
+        //Console.WriteLine($"Order ID: {order.ID}");
         Console.WriteLine($"Order Time: {order.OrderTime}");
         Console.WriteLine($"Customer: {order.Customer.FirstName} {order.Customer.LastName}");
         Console.WriteLine("Products:");
@@ -79,6 +79,12 @@ namespace ProjectStoreApiBusiness
     }
     
 }
+
+        private List<Order> GetOrdersByLocation(Location storeLocation)
+        {
+            throw new NotImplementedException();
+        }
+
         public void DisplayCustomerOrderHistory(Customer customer)
 {
     // Input validation
@@ -88,41 +94,39 @@ namespace ProjectStoreApiBusiness
     }
 
     // Get the order history from the database
-    List<Order> orders = OrderRepository.GetOrdersBy;
+   // List<Order> orders = OrderRepository.GetOrdersBy;
 
     }
 
-    private void AddToCart(Product product, StoreLocation store)
-    {
-        Console.WriteLine($"------ Add to Cart ------");
-        Console.WriteLine($"Product: {product.Name} - ${product.Price}");
-        Console.WriteLine($"Store: {store.Name}");
-        Console.WriteLine("-------------------------");
+    // private void AddToCart(Product product, StoreLocation store)
+    // {
+    //     Console.WriteLine($"------ Add to Cart ------");
+    //     Console.WriteLine($"Product: {product.Name} - ${product.Price}");
+    //     Console.WriteLine($"Store: {store.Name}");
+    //     Console.WriteLine("-------------------------");
 
-        Console.Write("Enter the quantity: ");
-        string userInput = GetUserInput();
-        if (int.TryParse(userInput, out int quantity) && quantity > 0)
-        {
-            bool success = storeApp.AddToCart(product, store, quantity);
-            if (success)
-            {
-                Console.WriteLine("Product added to cart successfully!");
-            }
-            else
-            {
-                Console.WriteLine("Failed to add product to cart.");
-            }
-        }          
-        else
-        {
-            Console.WriteLine("Invalid quantity. Please try again.");
-        }
+    //     Console.Write("Enter the quantity: ");
+    //     string userInput = GetUserInput();
+    //     if (int.TryParse(userInput, out int quantity) && quantity > 0)
+    //     {
+    //         bool success = storeApp.AddToCart(product, store, quantity);
+    //         if (success)
+    //         {
+    //             Console.WriteLine("Product added to cart successfully!");
+    //         }
+    //         else
+    //         {
+    //             Console.WriteLine("Failed to add product to cart.");
+    //         }
+    //     }          
+    //     else
+    //     {
+    //         Console.WriteLine("Invalid quantity. Please try again.");
+    //     }
 
-        Console.WriteLine("-------------------------");
-        ChooseStore();
+    //     Console.WriteLine("-------------------------");
+    //     ChooseStore();
     }  
     
  }
-
-}
 
