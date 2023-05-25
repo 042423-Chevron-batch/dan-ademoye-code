@@ -1,13 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <ItemGroup>
-    <ProjectReference Include="..\ProjectStoreApiModels\ProjectStoreApiModels.csproj" />
+    <ProjectReference Include="..\ProjectStoreApiModels\ProjectStoreApiModels.csproj"/>
   </ItemGroup>
-  
+  <ItemGroup>
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.5"/>
+  </ItemGroup>
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
-
 </Project>

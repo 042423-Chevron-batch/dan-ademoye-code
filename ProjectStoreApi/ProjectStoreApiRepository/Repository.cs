@@ -44,10 +44,10 @@ namespace ProjectStoreApiRepository
     
         private readonly string _connectionString;
 
-        public StoreRepository(string connectionString)
-        {
-            _connectionString = connectionString;
-        }
+        // public StoreRepository(string connectionString)
+        // {
+        //     _connectionString = connectionString;
+        // }
 
         public List<Store> GetAllStores()
         {
@@ -69,7 +69,7 @@ namespace ProjectStoreApiRepository
                             {
                                 Id = (int)reader["Id"],
                                 Name = (string)reader["Name"],
-                                Location = (string)reader["Location"]
+                                // Location = (string)reader["Location"]
                             };
 
                             stores.Add(store);
@@ -120,61 +120,59 @@ namespace ProjectStoreApiRepository
     
     // method retrieves the order history for a specific store
 
-    public void InsertOrder(Order order)
-    {
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            connection.Open();
+    // public void InsertOrder(Order order)
+    // {
+    //     using (SqlConnection connection = new SqlConnection(_connectionString))
+    //     {
+    //         connection.Open();
 
-            string query = "INSERT INTO Orders (CustomerId, StoreId, OrderTime) VALUES (@CustomerId, @StoreId, @OrderTime)";
+    //         string query = "INSERT INTO Orders (CustomerId, StoreId, OrderTime) VALUES (@CustomerId, @StoreId, @OrderTime)";
 
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                command.Parameters.AddWithValue("@CustomerId", order.CustomerId);
-                command.Parameters.AddWithValue("@StoreId", order.StoreId);
-                command.Parameters.AddWithValue("@OrderTime", order.OrderTime);
+    //         using (SqlCommand command = new SqlCommand(query, connection))
+    //         {
+    //             command.Parameters.AddWithValue("@CustomerId", order.CustomerId);
+    //             command.Parameters.AddWithValue("@StoreId", order.StoreId);
+    //             command.Parameters.AddWithValue("@OrderTime", order.OrderTime);
 
-                command.ExecuteNonQuery();
-            }
-        }
+    //             command.ExecuteNonQuery();
+    //         }
+    //     }
+    // }
+
+    // public List<Order> GetOrderHistoryByStoreId(int storeId)
+    // {
+    //     List<Order> orders = new List<Order>();
+
+    //     using (SqlConnection connection = new SqlConnection(_connectionString))
+    //     {
+    //         connection.Open();
+
+    //         string query = "SELECT Id, CustomerId, StoreId, OrderTime FROM Orders WHERE StoreId = @StoreId";
+
+    //         using (SqlCommand command = new SqlCommand(query, connection))
+    //         {
+    //             command.Parameters.AddWithValue("@StoreId", storeId);
+
+    //             using (SqlDataReader reader = command.ExecuteReader())
+    //             {
+    //                 while (reader.Read())
+    //                 {
+    //                     Order order = new Order
+    //                     {
+    //                         Id = (int)reader["Id"],
+    //                         CustomerId = (int)reader["CustomerId"],
+    //                         StoreId = (int)reader["StoreId"],
+    //                         OrderTime = (DateTime)reader["OrderTime"]
+    //                     };
+
+    //                     orders.Add(order);
+    //                 }
+    //             }
+    //         }
+    //     }
+
+        // return orders;
     }
-
-    public List<Order> GetOrderHistoryByStoreId(int storeId)
-    {
-        List<Order> orders = new List<Order>();
-
-        using (SqlConnection connection = new SqlConnection(_connectionString))
-        {
-            connection.Open();
-
-            string query = "SELECT Id, CustomerId, StoreId, OrderTime FROM Orders WHERE StoreId = @StoreId";
-
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                command.Parameters.AddWithValue("@StoreId", storeId);
-
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        Order order = new Order
-                        {
-                            Id = (int)reader["Id"],
-                            CustomerId = (int)reader["CustomerId"],
-                            StoreId = (int)reader["StoreId"],
-                            OrderTime = (DateTime)reader["OrderTime"]
-                        };
-
-                        orders.Add(order);
-                    }
-                }
-            }
-        }
-
-        return orders;
-    }
-
-}
 
 
 
