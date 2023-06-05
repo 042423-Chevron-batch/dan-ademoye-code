@@ -1,105 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dan Html Demo</title>
-    <link rel="stylesheet" href="styles.css">
+  <title>Chain Store App</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-
 <body>
-    <div class="container">
-     <!-- <div class="block"> -->
-    <img src="data:image/jpeg;base64,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" alt="">
-    </div>
-    <!-- <div style="background-color: blue;" > -->
-    <h1
-    <p><b>About</b></p>
-    </h1>
-    <p> Some text about this website </p>
-    </div>
-    <h1
-    <p><b>Our Locations</b></p>
-    </h1>
-    <div>
-    <ul>
-        <li>USA</li>
+  <header>
+    <h1>Chain Store App</h1>
+  </header>
 
-        <ul>
-          <span style="background-color: blue;"> 
-          <u><li>New York</li>
-           <li>Columbus</li>
-           <li>Austin</li> 
-           <li>Philly</li> </u>
-          </span> 
-        </ul>
-    </div>
-    <div>
-        <ul>
-            <li>World</li>
-            
-            <ul>
-                
-               <u><li>Ottawa</li>
-               <li>Sydney</li></u>
-        
-            </ul>
-     </div>      
-    <h1
-    <p><b>Upcoming Classes</b></p>
-    </h1>      
-    <table style="width:20%">
-        
-         <thead>
-             <th>Location</th>
-            <th>Topic</th>
-          </thead>
-          <tbody>
-            <tr>
-            <u><td>New York</td></u>
-            <td>Javascript & jQuery</td>
-          </tr>
-          <tr>
-            <td>San Francisco</td>
-            <td>HTML & CSS</td>
-            </tbody>
-        
-    </table>
-    <div class="block">
-        <!-- sign up form -->
-        <div><h3>Sign Up!</h3></div>
-
-    <form action=" Sign Up">
-        <label for="">Name:</label>
-        <input type="text"><br>
-        <label for="">Email:</label>
-        <input type="text"><br>
-        <label for="location">Location: </label>
-        <select name="location" id="">
-            <option value="">San Francisco</option>
-            <option value="">New york</option>
-        </select><br>
-        <div>
-        <label for="gender">Gender:</label>
+  <!-- <div id="content"> -->
+    <div id="content">
+        <div id="registrationSection">
+          <h2>Registration</h2>
+          <input type="text" id="username" placeholder="Username">
+          <input type="password" id="password" placeholder="Password">
+          <input type="text" id="fullName" placeholder="Full Name">
+          <input type="text" id="email" placeholder="Email">
+          <button onclick="register()">Register</button>
         </div>
-        <label for="">Female</label>
-        <input type="checkbox" name="" id="">
-        <label for="">Male</label>
-        <input type="checkbox" name="" id=""><br>
-        <label for="">Experience:</label><br>
-        <textarea name="tarea" id="tarea" cols="30" rows="10"></textarea><br>
-        <input type="submit" value="sign up">
-        <div><a href="http://www.twitter.com" target="_twiter">Twitter</a> | 
-            <a href="http://www.facebook.com" target="_facebook">Facebook</a> |
-            <a href="http://www.Flickr.com" target="_blank">Flickr</a>
-        </div>
+      </div>
     
-    </form>
+    <div id="loginSection">
+      <h2>Login</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <button onclick="login()">Login</button>
+    </div>
 
+    <!-- Add Customer Section -->
+    <div id="addCustomerSection">
+        <h2>Add Customer</h2>
+        <input type="text" id="newCustomerName" placeholder="Customer Name">
+        <input type="text" id="newCustomerEmail" placeholder="Email">
+        <button onclick="addCustomer()">Add Customer</button>
+      </div>
+  
+
+    <!-- <div id="storeSection" style="display: none;"> -->
+      <h2>Choose a Store</h2>
+      <select id="storeSelect" onchange="showProducts()">
+        <option value="">Select a store</option>
+        <option value="store1">Store 1</option>
+        <option value="store2">Store 2</option>
+        <option value="store3">Store 3</option>
+      </select>
+    </div>
+
+    <!-- <div id="productSection" style="display: none;"> -->
+      <h2>Available Products</h2>
+      <div id="productList"></div>
+    </div>
+
+    <!-- Place Order Section -->
+    <div id="placeOrderSection">
+        <h2>Place Order</h2>
+        <input type="text" id="customerName" placeholder="Customer Name">
+        <input type="text" id="storeLocation" placeholder="Store Location">
+        <input type="text" id="product" placeholder="Product">
+        <input type="number" id="quantity" placeholder="Quantity">
+        <button onclick="placeOrder()">Place Order</button>
+      </div>
+
+    <!-- <div id="cartSection" style="display: none;"> -->
+      <h2>Cart</h2>
+      <div id="cartItems"></div>
+      <button onclick="checkout()">Checkout</button>
+    </div>
     
- <script> src= " JavaS.js"</script>
+    <!-- Order Details Section -->
+    <div id="orderDetailsSection">
+        <h2>Order Details</h2>
+        <p><strong>Customer:</strong> <span id="orderCustomerName"></span></p>
+        <p><strong>Store Location:</strong> <span id="orderStoreLocation"></span></p>
+        <p><strong>Product:</strong> <span id="orderProduct"></span></p>
+        <p><strong>Quantity:</strong> <span id="orderQuantity"></span></p>
+      </div>
+      
+       <!-- Order History Section -->
+    <div id="orderHistorySection">
+        <h2>Order History</h2>
+        <input type="text" id="customerOrderHistory" placeholder="Customer Name">
+        <button onclick="displayOrderHistory()">Display Order History</button>
+        <div id="orderHistory"></div>
+      </div>
+    </div>
+
+    <!-- <div id="orderHistorySection" style="display: none;"> -->
+      <h2>Order History</h2>
+      <select id="orderHistorySelect" onchange="showOrderHistory()">
+        <option value="">Select a store</option>
+        <option value="store1">Store 1</option>
+        <option value="store2">Store 2</option>
+        <option value="store3">Store 3</option>
+      </select>
+      <div id="orderHistory"></div>
+    </div>
+  </div>
+  <script src="JavaS.js"></script>
 </body>
-
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

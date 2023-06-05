@@ -1,7 +1,66 @@
-    .container {
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+h1 {
+  margin: 0;
+}
+
+#content {
+  padding: 20px;
+}
+
+h2 {
+  color: #333;
+}
+
+input[type="text"],
+input[type="password"] {
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+#productList {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+.productItem {
+  border: 1px solid #333;
+  padding: 10px;
+}
+
+#cartItems {
+  margin-top: 10px;
+}
+
+#orderHistory {
+  margin-top: 10px;
+}
+
+   
+   
+   /* .container {
       border: 2px solid orange;
     }
 
     .block {
       padding: 20px;
-    }
+    } */

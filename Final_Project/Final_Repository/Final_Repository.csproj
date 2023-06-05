@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="..\ProjectStoreApiModels\ProjectStoreApiModels.csproj" />
+    <ProjectReference Include="..\Final_Model\Final_Model.csproj" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="microsoft.data.sqlclient" Version="5.1.1" />
